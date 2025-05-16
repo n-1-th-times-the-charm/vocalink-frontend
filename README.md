@@ -1,69 +1,106 @@
-# Welcome to your Lovable project
+# 💙 Vocalink:
 
-## Project info
+A document editor that lets neurodivergent users (ADHD, ASD, dyslexia, dysgraphia, etc.) dictate, edit, and transform text naturally, without special voice commands.
 
-**URL**: https://lovable.dev/projects/c85130c1-24e6-417f-9f43-dbdc85c74bec
+## 👥 Team:
 
-## How can I edit this code?
+**Team Name:** (N + 1)-th Time's the Charm
 
-There are several ways of editing your application.
+### 💪🏼 Team Members:
 
-**Use Lovable**
+<div align="center">
+  <table>
+      <tr>
+      <td align="center"><a href="https://github.com/huzaifakhan04"><img src="https://avatars.githubusercontent.com/u/113238098?v=4" width="100px" alt="huzaifakhan04" style="border-radius: 50%"><br><sub><b>Huzaifa Khan</b></sub></a><br><sub>Team Lead</sub></td>
+      <td align="center"><a href="https://github.com/hash2004"><img src="https://avatars.githubusercontent.com/u/151638487?v=4" width="100px" alt="hash2004" style="border-radius: 50%"><br><sub><b>Hashim M. Nadeem</b></sub></a><br><sub>Team Member</sub></td>
+      <td align="center"><a href="https://github.com/Ibzie"><img src="https://avatars.githubusercontent.com/u/57735223?v=4" width="100px" alt="Ibzie" style="border-radius: 50%"><br><sub><b>Ibrahim Akhtar</b></sub></a><br><sub>Team Member</sub></td>
+    </tr>
+  </table>
+</div>
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c85130c1-24e6-417f-9f43-dbdc85c74bec) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Getting Started:
 
-**Use your preferred IDE**
+### 🔧 Run Backend (Locally):
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+To run the FastAPI backend locally:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🐳 Running with Docker:
 
-**Use GitHub Codespaces**
+### 🧠 Backend Service:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Build the Docker image:
 
-## What technologies are used for this project?
+   ```bash
+   docker build -t vocalink:latest .
+   ```
 
-This project is built with .
+2. Run the container:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+   ```bash
+   docker run \
+     -e GOOGLE_API_KEY="$GOOGLE_API_KEY" \
+     -e AAI_API_KEY="$AAI_API_KEY" \
+     -p 8000:8000 --privileged \
+     vocalink:latest
+   ```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/c85130c1-24e6-417f-9f43-dbdc85c74bec) and click on Share -> Publish.
+### 🎨 Frontend Service:
 
-## I want to use a custom domain - is that possible?
+1. Navigate to the frontend directory:
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+   ```bash
+   cd vocalink-frontend
+   ```
+
+2. Build the Docker image:
+
+   ```bash
+   docker build \
+     --build-arg AAI_API_KEY="$AAI_API_KEY" \
+     -t vocalink-frontend:latest .
+   ```
+
+3. Run the container:
+
+   ```bash
+   docker run -p 3000:80 vocalink-frontend:latest
+   ```
+
+4. Access the frontend at: [http://localhost:3000](http://localhost:3000)
+
+---
+
+### 🧩 Run Entire App via Docker Compose:
+
+To run both frontend and backend using Docker Compose:
+
+* Start services:
+
+  ```bash
+  docker compose up
+  ```
+
+* Rebuild and start services:
+
+  ```bash
+  docker compose up --build
+  ```
+
+---
+
+## 📌 Environment Variables:
+
+Make sure to set the following environment variables before running:
+
+* `GOOGLE_API_KEY`
+* `AAI_API_KEY`
