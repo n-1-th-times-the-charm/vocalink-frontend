@@ -32,25 +32,25 @@ python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 
 ---
 
-## 🐳 Running with Docker:
+## 🐳 Running With Docker:
 
 ### 🧠 Backend Service:
 
 1. Build the Docker image:
 
-   ```bash
-   docker build -t vocalink:latest .
-   ```
+    ```bash
+    docker build -t vocalink:latest .
+    ```
 
 2. Run the container:
 
-   ```bash
-   docker run \
-     -e GOOGLE_API_KEY="$GOOGLE_API_KEY" \
-     -e AAI_API_KEY="$AAI_API_KEY" \
-     -p 8000:8000 --privileged \
-     vocalink:latest
-   ```
+    ```bash
+    docker run \
+      -e GOOGLE_API_KEY="$GOOGLE_API_KEY" \
+      -e AAI_API_KEY="$AAI_API_KEY" \
+      -p 8000:8000 --privileged \
+      vocalink:latest
+    ```
 
 ---
 
@@ -58,29 +58,29 @@ python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 
 1. Navigate to the frontend directory:
 
-   ```bash
-   cd vocalink-frontend
-   ```
+    ```bash
+    cd vocalink-frontend
+    ```
 
 2. Build the Docker image:
 
-   ```bash
-   docker build \
-     --build-arg AAI_API_KEY="$AAI_API_KEY" \
-     -t vocalink-frontend:latest .
-   ```
+    ```bash
+    docker build \
+      --build-arg AAI_API_KEY="$AAI_API_KEY" \
+      -t vocalink-frontend:latest .
+    ```
 
 3. Run the container:
 
-   ```bash
-   docker run -p 3000:80 vocalink-frontend:latest
-   ```
+    ```bash
+    docker run -p 3000:80 vocalink-frontend:latest
+    ```
 
 4. Access the frontend at: [http://localhost:3000](http://localhost:3000)
 
 ---
 
-### 🧩 Run Entire App via Docker Compose:
+### 🧩 Run Entire Application via Docker Compose:
 
 To run both frontend and backend using Docker Compose:
 
@@ -102,5 +102,7 @@ To run both frontend and backend using Docker Compose:
 
 Make sure to set the following environment variables before running:
 
-* `GOOGLE_API_KEY`
-* `AAI_API_KEY`
+* `GOOGLE_API_KEY` – refers to the Gemini Developer API key. You can create one via the [Google AI Studio](https://ai.google.dev/gemini-api/docs/api-key).
+* `AAI_API_KEY` – refers to the AssemblyAI API key. You can obtain it by signing up at the [AssemblyAI Dashboard](https://www.assemblyai.com/dashboard/signup)
+
+> **Note:** Both API keys require credits to be purchased. They cannot be used on the free trial.
