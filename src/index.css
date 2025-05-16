@@ -1,0 +1,203 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  :root {
+    --background: 200 30% 99%;
+    --foreground: 210 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 10%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 210 20% 10%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 20% 40%;
+
+    --accent: 199 89% 94%;
+    --accent-foreground: 199 89% 24%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 92%;
+    --input: 210 20% 92%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 210 20% 20%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 94%;
+    --sidebar-accent-foreground: 210 20% 10%;
+    --sidebar-border: 210 20% 92%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  .dark {
+    --background: 210 25% 10%;
+    --foreground: 210 25% 98%;
+
+    --card: 210 25% 12%;
+    --card-foreground: 210 25% 98%;
+
+    --popover: 210 25% 12%;
+    --popover-foreground: 210 25% 98%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 25% 20%;
+    --secondary-foreground: 210 25% 98%;
+
+    --muted: 210 25% 15%;
+    --muted-foreground: 210 25% 60%;
+
+    --accent: 199 89% 20%;
+    --accent-foreground: 199 89% 90%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 25% 20%;
+    --input: 210 25% 20%;
+    --ring: 199 89% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans min-h-screen;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+
+}
+
+@layer components {
+
+  .editor-content {
+    @apply min-h-[70vh] max-h-[70vh] p-6 outline-none overflow-y-auto;
+  }
+
+  .editor-content:focus {
+    @apply ring-0 outline-none;
+  }
+
+  .recording-indicator {
+    @apply inline-flex items-center text-sm text-muted-foreground;
+  }
+
+  .recording-indicator::before {
+    content: "";
+    @apply w-2 h-2 bg-destructive rounded-full mr-2 animate-pulse-recording;
+  }
+
+  .shimmer {
+    @apply bg-gradient-to-r from-transparent via-muted-foreground/10 to-transparent bg-[length:200%_100%] animate-shimmer;
+  }
+
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  }
+  
+  .toolbar-button {
+    @apply p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200;
+  }
+
+  .toolbar-button.active {
+    @apply text-primary bg-primary/10;
+  }
+
+  .document-card {
+    @apply p-3 rounded-xl border border-border bg-card hover:shadow-md transition-all duration-300 hover:border-primary/30;
+  }
+
+  .command-highlight {
+    @apply bg-accent text-accent-foreground px-1 py-0.5 rounded transition-colors duration-500;
+  }
+  
+  .modification-highlight {
+    @apply text-blue-500 transition-colors duration-1000;
+  }
+
+  @keyframes pulse-recording {
+
+    0% {
+      transform: scale(0.95);
+      opacity: 1;
+    }
+
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+
+    100% {
+      transform: scale(0.95);
+      opacity: 1;
+    }
+
+  }
+  
+  .animate-pulse-recording {
+    animation: pulse-recording 2s infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-in-out;
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+  
+  @keyframes slide-in {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    to { background-position: -200% 0; }
+  }
+
+}

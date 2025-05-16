@@ -1,0 +1,85 @@
+@media (max-width: 768px) {
+
+  .sidebar-mobile {
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+}
+
+.sidebar-slide-in {
+  animation: sidebarSlideIn 0.3s ease-out;
+}
+
+@keyframes sidebarSlideIn {
+
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+}
+
+.editor-content {
+  min-height: 200px;
+}
+
+.mobile-bottom-bar {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bg-accent {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+
+  .header-mobile {
+    padding: 0.75rem 0;
+  }
+
+}
+
+:root {
+  --header-height: 4rem;
+}
+
+@supports (padding-top: env(safe-area-inset-top)) {
+
+  .mobile-safe-area {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .mobile-sidebar {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+  
+}
