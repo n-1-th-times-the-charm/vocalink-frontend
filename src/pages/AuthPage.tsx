@@ -398,7 +398,7 @@ const AuthPage: React.FC = () => {
               <iframe 
                 width="100%" 
                 height="100%" 
-                src="https://www.youtube.com/embed/2Ic2JqRH78g?si=NMggqMkvMPIvEd3O&controls=1&showinfo=0&rel=0&modestbranding=1" 
+                src="https://www.youtube.com/embed/2EHemNhCX64?si=NMggqMkvMPIvEd3O&controls=1&showinfo=0&rel=0&modestbranding=1" 
                 title="Vocalink Demo" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
